@@ -1,0 +1,9 @@
+/node_modules
+.vscode/*
+src/migrations
+.production.env
+.development.env
+/postgres
+.env
+.production.env
+/dist

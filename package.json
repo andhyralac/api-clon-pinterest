@@ -1,0 +1,41 @@
+{
+  "name": "api-clon-pinterest",
+  "version": "1.0.0",
+  "description": "api clon pinterest",
+  "main": "",
+  "author": "Andhy Ralac",
+  "license": "ISC",
+  "scripts": {
+    "build": "npx tsc",
+    "start": "npm run build && node dist/server.js",
+    "start:prod": "SET NODE_ENV=production && npm start",
+    "start:dev": "SET NODE_ENV=development && nodemon src/server.ts",
+    "typeorm": "typeorm-ts-node-commonjs -d ./src/config/data-source.ts",
+    "m:gen": "npm run typeorm migration:generate",
+    "m:run": "npm run typeorm migration:run",
+    "docker-compose:up:dev": "docker-compose --env-file .development.env up -d"
+  },
+  "dependencies": {
+    "bcryptjs": "2.4.3",
+    "class-validator": "0.14.1",
+    "cloudinary": "^2.5.1",
+    "cors": "2.8.5",
+    "express": "4.21.1",
+    "helmet": "8.0.0",
+    "jsonwebtoken": "9.0.2",
+    "morgan": "1.10.0",
+    "pg": "8.13.1",
+    "reflect-metadata": "0.2.2",
+    "typeorm": "0.3.20"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "2.4.6",
+    "@types/cors": "2.8.17",
+    "@types/express": "5.0.0",
+    "@types/jsonwebtoken": "9.0.7",
+    "@types/morgan": "1.9.9",
+    "nodemon": "3.1.7",
+    "ts-node": "10.9.2",
+    "typescript": "5.6.3"
+  }
+}
