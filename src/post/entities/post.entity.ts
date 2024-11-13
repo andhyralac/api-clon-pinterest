@@ -2,10 +2,11 @@ import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "ty
 import { Like } from "../../like/entities/like.entity";
 import { Category } from "../../category/entities/category.entity";
 import { User } from "../../user/entities/user.entity";
+import { BaseEntity } from "../../config/base.entity";
 
 
 @Entity()
-export class Post {
+export class Post extends BaseEntity {
 
     @PrimaryGeneratedColumn("uuid")
     id: string;
