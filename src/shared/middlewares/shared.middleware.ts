@@ -1,6 +1,6 @@
 import { validate } from "class-validator";
 
-import { HttpResponse } from "../response/htt.response";
+import { HttpResponse } from "../response/http.response";
 import { NextFunction, Request, Response } from "express";
 import passport from "../../auth/utils/passport.util";
 import { Token } from "../../auth/utils/jwt.util";

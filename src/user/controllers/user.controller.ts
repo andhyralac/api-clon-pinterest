@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 
 
-import { HttpResponse } from "../../shared/response/htt.response";
+import { HttpResponse } from "../../shared/response/http.response";
 import { ProfileDTO } from "../dto/profile.dto";
 import { TransactionService } from "../services/transactions.service";
 import { UserDTO } from "../dto/user.dto";
