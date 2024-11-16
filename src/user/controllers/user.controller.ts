@@ -20,9 +20,9 @@ export class UserController {
 
         try {
             const r = await this.transactionService.createUserAndProfile(profile, user);
-            return this.httReponse.Created(res, r);
+            this.httReponse.Created(res, r);
         } catch (error) {
-            return this.httReponse.InternalServerError(res, 'An error occurred on the server to process the request');
+            this.httReponse.InternalServerError(res, 'An error occurred on the server to process the request');
         }
     }
 
