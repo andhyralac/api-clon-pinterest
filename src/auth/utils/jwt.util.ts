@@ -10,19 +10,21 @@ export class Token extends ConfigServer {
     // se asigna el secret de jwt en una variable privada
     private jwtSecret: string = this.getEnvironment('JWT_SECRET')!;
 
-    constructor(){
+    constructor(
+        private readonly jwtInstance = jwt
+    ){
         super();
     }
 
     // funcion para generar el token
     generate(payload: IUserPayload) {
-        return jwt.sign(payload, this.jwtSecret, { expiresIn: '4h' });
+        return this.jwtInstance.sign(payload, this.jwtSecret, { expiresIn: '4h' });
     }
 
     // funcion para verificar el token
     verify(token: string): IUserPayload {
         try {
-            return jwt.verify(token, this.jwtSecret) as IUserPayload;
+            return this.jwtInstance.verify(token, this.jwtSecret) as IUserPayload;
         } catch (error) {
 
             if (error instanceof jwt.TokenExpiredError) {
