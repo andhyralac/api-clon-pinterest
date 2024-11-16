@@ -18,8 +18,8 @@ export class Profile extends BaseEntity {
     @Column({ type: "varchar", length: 255 })
     nickname: string;
 
-    @Column({ type: "varchar", length: 255 })
-    img: string;
+    @Column({ type: "varchar", length: 255, nullable: true })
+    img?: string;
 
     @OneToOne(() => User, (user) => user.profile)
     user: User;
