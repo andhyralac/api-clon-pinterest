@@ -10,14 +10,14 @@ import { User } from "../../user/entities/user.entity";
 
 export class SharedMiddleware {
     constructor(
-        public httResponse: HttpResponse = new HttpResponse(),
-        public token: Token = new Token()
+        private httpResponse: HttpResponse = new HttpResponse(),
+        private token: Token = new Token()
     ){}
 
     authenticateJWT(req: Request, res: Response, next: NextFunction) {
         passport.authenticate('jwt', { session: false }, (err: any, user: User) => {
             if (err || !user ) {
-                return this.httResponse.Unauthorized(res, 'Unauthorized or invalid token')
+                return this.httpResponse.Unauthorized(res, 'Unauthorized or invalid token')
             }
 
             req.user = {
@@ -32,7 +32,7 @@ export class SharedMiddleware {
     validateDto(valid: object, res: Response, next: NextFunction){
         validate(valid).then((errors) => {
             if (errors.length > 0) {
-                return this.httResponse.BadRequest(res, errors.map( error => {
+                return this.httpResponse.BadRequest(res, errors.map( error => {
                     return {
                         property: error.property,
                         constraints: error.constraints
