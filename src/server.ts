@@ -10,6 +10,7 @@ import { corsOptions } from "./config/cors.config";
 import { ConfigServer } from "./config/config";
 import { UserRouter } from "./user/user.router";
 import passport from "./auth/utils/passport.util";
+import { AuthRouter } from "./auth/auth.router";
 
 
 
@@ -36,7 +37,8 @@ class ServerBootstrap extends ConfigServer {
 
     private routers(): Array<express.Router> {
         return [
-            new UserRouter().router
+            new UserRouter().router,
+            new AuthRouter().router
         ];
     }
 
