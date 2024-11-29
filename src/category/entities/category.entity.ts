@@ -1,9 +1,10 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Post } from "../../post/entities/post.entity";
+import { BaseEntity } from "../../config/base.entity";
 
 
 @Entity()
-export class Category {
+export class Category extends BaseEntity {
 
     @PrimaryGeneratedColumn("uuid")
     id: string;

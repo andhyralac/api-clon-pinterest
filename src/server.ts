@@ -8,6 +8,10 @@ import morgan from "morgan";
 import { AppDataSource } from './config/data-source';
 import { corsOptions } from "./config/cors.config";
 import { ConfigServer } from "./config/config";
+import { UserRouter } from "./user/user.router";
+import passport from "./auth/utils/passport.util";
+import { AuthRouter } from "./auth/auth.router";
+import { CategoryRouter } from "./category/category.router";
 
 
 
@@ -26,13 +30,18 @@ class ServerBootstrap extends ConfigServer {
             this.app.use(morgan('dev'));
         }
 
+        this.app.use(passport.initialize())
         this.dbConnect();
-        // this.app.use("/api/v1/", this.routers());
+        this.app.use("/api/v1/", this.routers());
         this.listen();
     }
 
     private routers(): Array<express.Router> {
-        return [];
+        return [
+            new UserRouter().router,
+            new AuthRouter().router,
+            new CategoryRouter().router
+        ];
     }
 
     private dbConnect(): void {
